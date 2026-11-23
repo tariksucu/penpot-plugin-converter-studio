@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  pull_request:
+    paths-ignore:
+      - '**.md'
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+
+# Cancel in-progress runs for the same branch/PR.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      # Dependencies' install scripts are not needed to check, test or build.
+      - name: Install dependencies
+        run: 'npm ci --ignore-scripts'
+
+      # The panel against the DOM's types; plugin.js without them (Penpot's sandbox has none),
+      # both against Penpot's official @penpot/plugin-types.
+      - name: Type check
+        run: 'npm run typecheck'
+
+      # Unit tests with a stand-in Penpot API and a stand-in Converter Studio API: no network.
+      - name: Run tests
+        run: 'npm test'
+
+      # The build refuses a bad manifest, plugin.js that uses the DOM or the network, and any
+      # local address, source map or key in what would be hosted.
+      - name: Build
+        run: 'npm run build'
+
+      - name: Check the hosted files
+        run: |
+          for file in manifest.json plugin.js index.html ui.js styles.css icon.png; do
+            test -s "dist/$file" || { echo "dist/$file is missing"; exit 1; }
+          done
+          ls -l dist

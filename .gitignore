@@ -1,0 +1,6 @@
+# The build (node build.mjs): made from the source, hosted, never committed.
+node_modules/
+dist/
+coverage/
+*.tgz
+.DS_Store

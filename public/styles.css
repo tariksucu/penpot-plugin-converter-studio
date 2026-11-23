@@ -1,0 +1,338 @@
+/*
+ * The panel follows Penpot's theme: `data-theme` on <html> is set from the address Penpot opens
+ * it with and from each `themechange` (src/ui/theme.ts). The colours are Penpot's own plugin
+ * palette (dark and light), so the panel looks like part of Penpot. No web fonts are loaded.
+ */
+
+:root,
+:root[data-theme='dark'] {
+  --bg: #18181a;
+  --surface: #212426;
+  --surface-2: #2e3434;
+  --text: #ffffff;
+  --muted: #8f9da3;
+  --border: #2e3434;
+  --accent: #7efff5;
+  --accent-text: #000000;
+  --accent-muted: #426158;
+  --error: #ff3277;
+  --success: #2d9f8f;
+  --brand: #ff5418;
+  --brand-line: #f2efe8;
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  --bg: #ffffff;
+  --surface: #f3f4f6;
+  --surface-2: #e8eaee;
+  --text: #000000;
+  --muted: #495e74;
+  --border: #e8eaee;
+  --accent: #6911d4;
+  --accent-text: #ffffff;
+  --accent-muted: #e1d2f5;
+  --error: #c80857;
+  --success: #2d9f8f;
+  --brand: #ff5418;
+  --brand-line: #16150f;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font:
+    12px/1.45 system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* The logomark: an outlined square and an orange one over it. */
+.mark {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.mark::before,
+.mark::after {
+  content: '';
+  position: absolute;
+  width: 9px;
+  height: 9px;
+}
+.mark::before {
+  top: 0;
+  left: 0;
+  border: 1.5px solid var(--brand-line);
+}
+.mark::after {
+  right: 0;
+  bottom: 0;
+  background: var(--brand);
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.credits {
+  color: var(--muted);
+}
+
+.body {
+  flex: 1;
+  padding: 12px;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.muted {
+  color: var(--muted);
+  margin: 0;
+}
+.small {
+  font-size: 11px;
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+  padding: 2px;
+  border-radius: 8px;
+  background: var(--surface);
+}
+.tab {
+  flex: 1;
+  padding: 6px 8px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  cursor: pointer;
+}
+.tab[aria-selected='true'] {
+  background: var(--surface-2);
+  color: var(--text);
+  font-weight: 600;
+}
+.tab:disabled {
+  cursor: default;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.label {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: 7px 8px;
+  border: 1px solid var(--surface-2);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+.input:focus,
+.select:focus,
+.button:focus-visible,
+.tab:focus-visible,
+.drop:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.drop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 18px 12px;
+  border: 1px dashed var(--muted);
+  border-radius: 8px;
+  background: var(--surface);
+  text-align: center;
+  cursor: pointer;
+}
+.drop.over {
+  border-color: var(--accent);
+}
+.drop-title {
+  font-weight: 600;
+}
+
+.picked {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border: 1px solid var(--surface-2);
+  border-radius: 8px;
+  background: var(--surface-2);
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+.button.primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-text);
+}
+.button.small {
+  padding: 4px 8px;
+  font-size: 11px;
+}
+.button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.link,
+.link-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.message {
+  margin: 0;
+  min-height: 1em;
+}
+.message:empty {
+  display: none;
+}
+.message.error {
+  color: var(--error);
+}
+.message.done {
+  color: var(--success);
+}
+
+.confirm {
+  padding: 10px;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  background: var(--surface);
+}
+.confirm p {
+  margin: 0 0 8px;
+}
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.results:empty {
+  display: none;
+}
+.result {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2px 8px;
+  align-items: center;
+  padding: 8px;
+  border-radius: 8px;
+  background: var(--surface);
+}
+.result .result-name {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.result .muted {
+  grid-column: 1;
+}
+.result .button {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+.result.failed .muted {
+  color: var(--error);
+}
+
+.foot {
+  display: flex;
+  gap: 12px;
+  padding: 10px 12px;
+  border-top: 1px solid var(--border);
+}

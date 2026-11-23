@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- connect-src is the API's origin (build.mjs); frame-ancestors can only be a header. -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src __CONNECT_SRC__; form-action 'none'; base-uri 'none'"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>Converter Studio for Penpot</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="ui.js" defer></script>
+  </head>
+  <body>
+    <div id="app" class="app"></div>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+{
+  // The plugin's code as Penpot runs it: in a sandbox with the `penpot` API and the language's
+  // own objects, without a DOM, `fetch` or storage. Type-checking it without the DOM's types
+  // makes any use of them an error here, not in Penpot.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ES2023"],
+    "types": ["@penpot/plugin-types"]
+  },
+  "include": ["src/plugin", "src/shared"]
+}

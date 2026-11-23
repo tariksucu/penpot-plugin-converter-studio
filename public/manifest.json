@@ -1,0 +1,8 @@
+{
+  "name": "Converter Studio",
+  "description": "Place HEIC, camera RAW, AVIF, TIFF, EPS, AI and PDF files on your boards, and export layers as AVIF, TIFF, ICO, size-capped WebP or JPG, or a smaller PDF.",
+  "version": 2,
+  "code": "plugin.js",
+  "icon": "icon.png",
+  "permissions": ["content:read", "content:write", "allow:downloads"]
+}
