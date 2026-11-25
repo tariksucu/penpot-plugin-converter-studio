@@ -52,7 +52,7 @@ start on their own (a picture costs 1 credit); dearer ones show the price and as
 
    Penpot shows what the plugin asks for (see "Privacy and security") before installing it.
 
-2. Create a Converter Studio account (free accounts get 13 credits a day) and an API key on
+2. Create a Converter Studio account (free accounts get 25 credits a day) and an API key on
    your [account page](https://converter.studio/account#api-keys).
 3. Open the plugin, paste the key and press **Connect**. The plugin checks it with Converter
    Studio and shows your credits.
