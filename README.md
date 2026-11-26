@@ -2,8 +2,8 @@
 
 A [Penpot](https://penpot.app) plugin for the files Penpot cannot use as they are. Place iPhone
 photos (HEIC), camera RAW, AVIF, TIFF, Illustrator and EPS drawings or a page of a PDF on your
-board, and export layers to formats Penpot does not export: AVIF, TIFF, ICO, WebP or JPG under
-a size you choose, or a smaller PDF. The conversions run on
+board, and export layers as what Penpot's own export cannot make: AVIF, TIFF, an ICO favicon, a
+WebP or JPG under a size you choose, or a smaller PDF. The conversions run on
 [Converter Studio](https://converter.studio), with your Converter Studio account's credits.
 
 ![The plugin's panel in Penpot's dark theme: an iPhone photo picked, to be placed as WebP up to 2560 px in the selected board](docs/place.png)
@@ -35,6 +35,9 @@ each result has a **Download** button (the link works for 6 hours):
 | TIFF          | scale (lossless, for print and photo tools)                         |
 | ICO (favicon) | 16, 32 and 48 px in one file, or one size up to 256 px              |
 | PDF (smaller) | Penpot's PDF with its pictures compressed (light, balanced, strong) |
+
+Penpot exports PNG, JPG, WebP, SVG and PDF itself, at a scale you choose. Use the plugin for WebP
+or JPG when the file has to stay under a size, and for PDF when it has to be smaller.
 
 ![Two boards exported as TIFF, each with its Download button](docs/export.png)
 

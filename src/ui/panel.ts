@@ -249,7 +249,7 @@ export async function startPanel(container: HTMLElement, deps: PanelDeps): Promi
       h('p', {
         class: 'muted',
         id: 'key-help',
-        text: 'Place HEIC, RAW, AVIF, TIFF, EPS, AI and PDF files on a board, and export layers as AVIF, WebP, JPG, TIFF, ICO or a smaller PDF. Conversions use your Converter Studio credits: 13 free a day, more with a paid plan.',
+        text: 'Place HEIC, RAW, AVIF, TIFF, EPS, AI and PDF files on a board, and export layers as AVIF, WebP, JPG, TIFF, ICO or a smaller PDF. Conversions use your Converter Studio credits: 25 free a day, more with a paid plan.',
       }),
       h(
         'div',

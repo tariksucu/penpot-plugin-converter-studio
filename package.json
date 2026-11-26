@@ -2,7 +2,7 @@
   "name": "penpot-plugin-converter-studio",
   "version": "1.0.0",
   "private": true,
-  "description": "Converter Studio for Penpot: place HEIC, camera RAW, AVIF, TIFF, EPS, AI and PDF files on a board, and export a selection as AVIF, WebP, JPG, TIFF, ICO or a smaller PDF.",
+  "description": "Converter Studio for Penpot: place HEIC, camera RAW, AVIF, TIFF, EPS, AI and PDF files on a board, and export a selection as AVIF, TIFF, ICO, WebP or JPG under a size limit, or a smaller PDF.",
   "license": "MIT",
   "author": "Converter Studio <support@converter.studio> (https://converter.studio)",
   "homepage": "https://converter.studio/developers",
